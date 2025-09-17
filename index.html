@@ -63,6 +63,7 @@
       border-radius: 50%;
       position: absolute;
       box-shadow: 0 0 15px rgba(255,255,255,0.4);
+      cursor: pointer;
     }
     /* Planets with glowing gradients */
     .mercury {
@@ -79,6 +80,7 @@
       position: absolute;
       top: -15px; left: 190px;
       width: 30px; height: 30px;
+      cursor: pointer;
     }
     .earth {
       width: 30px; height: 30px;
@@ -128,31 +130,41 @@
   </script>
 
   <!-- Sun -->
-  <div class="sun"></div>
+  <div class="sun" data-name="Sun"></div>
 
   <!-- Mercury orbit -->
   <div class="orbit" style="width:200px;height:200px;animation-duration:6s;">
-    <div class="planet mercury"></div>
+    <div class="planet mercury" data-name="Mercury"></div>
   </div>
 
   <!-- Venus orbit -->
   <div class="orbit" style="width:300px;height:300px;animation-duration:10s;">
-    <div class="planet venus"></div>
+    <div class="planet venus" data-name="Venus"></div>
   </div>
 
   <!-- Earth orbit (with Moon system) -->
   <div class="orbit" style="width:400px;height:400px;animation-duration:14s;">
-    <div class="earth-system">
+    <div class="earth-system" data-name="Earth">
       <div class="earth"></div>
       <div class="moon-orbit">
-        <div class="moon"></div>
+        <div class="moon" data-name="Moon"></div>
       </div>
     </div>
   </div>
 
   <!-- Mars orbit -->
   <div class="orbit" style="width:500px;height:500px;animation-duration:18s;">
-    <div class="planet mars"></div>
+    <div class="planet mars" data-name="Mars"></div>
   </div>
+
+  <script>
+    // Handle planet clicks
+    document.querySelectorAll('[data-name]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.stopPropagation(); // prevent bubbling
+        alert(el.getAttribute('data-name'));
+      });
+    });
+  </script>
 </body>
 </html>
