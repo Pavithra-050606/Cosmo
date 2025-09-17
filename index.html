@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Solar System with Moon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: black;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+    h1 {
+      position: absolute;
+      top: 20px;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px #fff;
+    }
+    /* Stars */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+    .sun {
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, #ffeb3b, #f57f17);
+      border-radius: 50%;
+      box-shadow: 0 0 40px 15px rgba(255, 204, 0, 0.8);
+      z-index: 10;
+    }
+    .orbit {
+      position: absolute;
+      border: 1px dashed rgba(255,255,255,0.15);
+      border-radius: 50%;
+      animation: spin linear infinite;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+    .planet {
+      border-radius: 50%;
+      position: absolute;
+      box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    }
+    /* Planets with glowing gradients */
+    .mercury {
+      width: 20px; height: 20px;
+      background: radial-gradient(circle, #b0bec5, #37474f);
+      top: -10px; left: 90px;
+    }
+    .venus {
+      width: 25px; height: 25px;
+      background: radial-gradient(circle, #ffcc80, #ef6c00);
+      top: -12px; left: 140px;
+    }
+    .earth-system {
+      position: absolute;
+      top: -15px; left: 190px;
+      width: 30px; height: 30px;
+    }
+    .earth {
+      width: 30px; height: 30px;
+      background: radial-gradient(circle, #64b5f6, #0d47a1);
+      border-radius: 50%;
+      position: absolute;
+      box-shadow: 0 0 15px rgba(100,181,246,0.7);
+    }
+    .moon-orbit {
+      position: absolute;
+      width: 60px; height: 60px;
+      top: -15px; left: -15px;
+      border: 1px dashed rgba(255,255,255,0.2);
+      border-radius: 50%;
+      animation: spin 3s linear infinite;
+    }
+    .moon {
+      width: 12px; height: 12px;
+      background: radial-gradient(circle, #eeeeee, #616161);
+      border-radius: 50%;
+      position: absolute;
+      top: -6px; left: 24px;
+      box-shadow: 0 0 8px rgba(255,255,255,0.5);
+    }
+    .mars {
+      width: 22px; height: 22px;
+      background: radial-gradient(circle, #ff8a65, #bf360c);
+      top: -11px; left: 240px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌌 Mini Solar System with Moon</h1>
+  
+  <!-- Twinkling Stars -->
+  <div class="stars"></div>
+  <script>
+    const starsContainer = document.querySelector('.stars');
+    for(let i=0;i<120;i++){
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.top = Math.random()*100 + '%';
+      s.style.left = Math.random()*100 + '%';
+      s.style.animationDuration = (1+Math.random()*2) + 's';
+      starsContainer.appendChild(s);
+    }
+  </script>
+
+  <!-- Sun -->
+  <div class="sun"></div>
+
+  <!-- Mercury orbit -->
+  <div class="orbit" style="width:200px;height:200px;animation-duration:6s;">
+    <div class="planet mercury"></div>
+  </div>
+
+  <!-- Venus orbit -->
+  <div class="orbit" style="width:300px;height:300px;animation-duration:10s;">
+    <div class="planet venus"></div>
+  </div>
+
+  <!-- Earth orbit (with Moon system) -->
+  <div class="orbit" style="width:400px;height:400px;animation-duration:14s;">
+    <div class="earth-system">
+      <div class="earth"></div>
+      <div class="moon-orbit">
+        <div class="moon"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mars orbit -->
+  <div class="orbit" style="width:500px;height:500px;animation-duration:18s;">
+    <div class="planet mars"></div>
+  </div>
+</body>
+</html>
